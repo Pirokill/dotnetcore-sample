@@ -5,6 +5,8 @@ RUN dotnet restore
 COPY . .
 RUN del bin obj /Q
 RUN dotnet publish -c release -o /app
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-nanoserver-1809 1809
 WORKDIR /app
 ENV ASPNETCORE_URLS http://+:80
 ENTRYPOINT ["dotnet", "mydotnetapp.dll"]
